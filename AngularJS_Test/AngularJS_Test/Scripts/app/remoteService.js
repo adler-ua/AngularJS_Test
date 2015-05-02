@@ -2,7 +2,7 @@
 
 cardsServices.factory('cardsService', ['$resource',
     function ($resource) {
-        return $resource('home/allcards', {}, {
+        return $resource('/api/cards', {}, {
             query: { method: 'GET', params: {}, isArray: true }
         });
     }]);

@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using AngularJS_Test.Models;
 
 namespace AngularJS_Test.Controllers
 {
@@ -18,30 +19,19 @@ namespace AngularJS_Test.Controllers
             return View();
         }
 
-        public class Card
-        {
-            public Card()
-            {
-            }
-
-            public Card(string id, string name) : this()
-            {
-                Id = id;
-                Name = name;
-            }
-
-            public string Id { get; set; }
-
-            public string Name { get; set; }
-        }
-
+        
         public ActionResult AllCards()
         {
-            var cards = new List<Card>
+            var cards = new List<Card>();
+            int diff = (int) 'z' - (int) 'a';
+            Random r = new Random(diff);
+            for (int i = 0; i < 1000; i++)
             {
-                new Card("1","a"),
-                new Card("2", "b")
-            };
+                char a = (char) ((int) 'a' + r.Next(0, diff));
+                char b = (char) ((int) 'a' + r.Next(0, diff));
+                char c = (char) ((int) 'a' + r.Next(0, diff));
+                cards.Add(new Card(i.ToString(), "" + a + b + c));
+            }
             return Json(cards,JsonRequestBehavior.AllowGet);
             return new JsonResult(){Data = Json(
 @"[
