@@ -2,7 +2,7 @@
 
 cardsControllers.controller('cardsListController', ['$scope', '$http', function ($scope, $http) {
         //$scope.cards = [{ id: 1 }, { id: 2 }];
-        $http.get("all.json").success(function (data) {
+        $http.get("home/allcards").success(function (data) {
             var cards = [];
             angular.forEach(data, function(card) {
                 cards.push(card);
